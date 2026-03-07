@@ -5,6 +5,4 @@ def leaky_relu(x, alpha=0.01):
     Vectorized Leaky ReLU implementation.
     """
     x = np.array(x, dtype=float)
-    x[x<0] = alpha* x[x<0]
-    
-    return x
+    return np.where(x>=0, x, alpha*x)
