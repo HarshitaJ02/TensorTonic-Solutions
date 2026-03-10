@@ -7,11 +7,9 @@ def softmax(x):
     For 2D, compute row-wise softmax.
     """
     # Write code here
-    x = np.asarray(x, dtype=float)
-    if x.ndim ==1:
-        e = np.exp(x - max(x))
-        return e/np.sum(e)
-    
+    x = np.atleast_2d(x).astype(float)    
     e = np.exp(x- np.max(x, axis =1, keepdims = True)) 
-    return e/np.sum(e, axis= 1, keepdims = True)
+    s = e/np.sum(e, axis= 1, keepdims = True)
+
+    return s if x.shape[0]>1 else s[0]
     
