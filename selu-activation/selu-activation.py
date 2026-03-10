@@ -7,5 +7,7 @@ def selu(x, lam=1.0507009873554804934193349852946, alpha=1.673263242354377284817
     """
     # Write code here
     x = np.asarray(x, dtype= float)
-    return np.where(x>0,x*lam, lam*alpha*(np.exp(x)-1))
+    res = np.where(x>0,x*lam, lam*alpha*(np.exp(x)-1))
+
+    return np.round(res,4).tolist()
    
