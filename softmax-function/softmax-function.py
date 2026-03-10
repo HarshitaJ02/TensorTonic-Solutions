@@ -9,11 +9,9 @@ def softmax(x):
     # Write code here
     x = np.asarray(x, dtype=float)
     if x.ndim ==1:
-        fn = np.exp(x - max(x))
-        fn2 = np.sum(fn)
-        return fn/fn2
-    else:
-        fn = np.exp(x- np.max(x, axis =1, keepdims = True)) 
-        summation = np.sum(fn, axis= 1, keepdims = True)
-        return fn/summation
+        e = np.exp(x - max(x))
+        return e/np.sum(e)
+    
+    e = np.exp(x- np.max(x, axis =1, keepdims = True)) 
+    return e/np.sum(e, axis= 1, keepdims = True)
     
